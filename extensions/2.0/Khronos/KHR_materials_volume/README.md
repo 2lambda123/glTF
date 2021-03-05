@@ -99,6 +99,11 @@ Light rays falling through the volume boundary are refracted according to the in
 <figcaption><em>Transmissive sphere with varying index of refraction. From left to right: 1.1, 1.5, 1.9.</em></figcaption>
 </figure>
 
+<figure style="text-align:center">
+<img src="./figures/ior-roughness.png"/>
+<figcaption><em>Rough transmissive sphere with varying index of refraction. From left to right: 1.1, 1.5, 1.9. Note that although all spheres share the same roughness = 0.3, the perceived blurriness of the background behind the spheres increases with the IOR. The perceived blurriness of the reflection stays the same.</em></figcaption>
+</figure>
+
 ## Attenuation
 
 The way in which a volumetric medium interacts with light and, therefore, determines its appearance is commonly specified by the attenuation coefficient σ<sub>t</sub> (also know as *extinction* coefficient). It is the probability density that light interacts with a particle per unit distance traveled in the medium. σ<sub>t</sub> is a wavelength-dependent value. It's defined in the range [0, inf] with m<sup>-1</sup> as unit. 
