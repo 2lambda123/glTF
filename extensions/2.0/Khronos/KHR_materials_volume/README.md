@@ -135,33 +135,33 @@ Light rays falling through the volume boundary are refracted according to the in
 
 ## Attenuation
 
-The way in which a volumetric medium interacts with light and, therefore, determines its appearance is commonly specified by the attenuation coefficient σ<sub>t</sub> (also know as *extinction* coefficient). It is the probability density that light interacts with a particle per unit distance traveled in the medium. σ<sub>t</sub> is a wavelength-dependent value. It's defined in the range [0, +inf) with m<sup>-1</sup> as unit.
+The way in which a volumetric medium interacts with light and, therefore, determines its appearance is commonly specified by the attenuation coefficient $\sigma_t$ (also know as *extinction* coefficient). It is the probability density that light interacts with a particle per unit distance traveled in the medium. $\sigma_t$ is a wavelength-dependent value. It's defined in the range $[0, +\infty)$ with $\mathrm{m}^{-1}$ as unit.
 
-There are two types of interaction between light photons and particles: absorption and scattering. Absorption removes the light energy from the photon and translates it to other forms of energy, e.g., heat. Scattering preserves the energy, but changes the direction of the light. Both act in wavelength-dependent manner. Based on these two possibilities, the attenuation coefficient is defined as the sum of two other coefficients: the absorption coefficient σ<sub>a</sub> and the scattering coefficient σ<sub>s</sub>.
+There are two types of interaction between light photons and particles: absorption and scattering. Absorption removes the light energy from the photon and translates it to other forms of energy, e.g., heat. Scattering preserves the energy, but changes the direction of the light. Both act in wavelength-dependent manner. Based on these two possibilities, the attenuation coefficient is defined as the sum of two other coefficients: the absorption coefficient $\sigma_a$ and the scattering coefficient $\sigma_s$.
 
-σ<sub>t</sub> = σ<sub>a</sub> + σ<sub>s</sub>
+$$\sigma_t = \sigma_a + \sigma_s$$
 
 > **NOTE**
 >
-> This extension does not define the scattering part of the volumetric light transport. For all further definitions we assume the scattering coefficient σ<sub>s</sub> to be zero for all wavelength, and therefore σ<sub>t</sub> = σ<sub>a</sub>.
+> This extension does not define the scattering part of the volumetric light transport. For all further definitions we assume the scattering coefficient $\sigma_s$ to be zero for all wavelength, and therefore $\sigma_t = \sigma_a$.
 
-The infinite range of the coefficient makes it rather unintuitive to control by users. To provide a convenient parameterization, this extension exposes two derived parameters: *attenuation color c* and *attenuation distance d* (see [Properties](#Properties)). The relation between the two parameters and the attenuation coefficient σ<sub>t</sub> is defined as
+The infinite range of the coefficient makes it rather unintuitive to control by users. To provide a convenient parameterization, this extension exposes two derived parameters: *attenuation color* $c$ and *attenuation distance* $d$ (see [Properties](#Properties)). The relation between the two parameters and the attenuation coefficient $\sigma_t$ is defined as
 
-σ<sub>t</sub> = -log(*c*) / *d*
+$$\sigma_t = \frac{-\log(c)}{d}$$
 
 For rendering, we are interested in the change of light when traversing the medium. So we need to integrate the attenuation coefficient along a path of a certain length.
 
-In a homogenous medium, σ<sub>t</sub> is constant, and we can compute the fraction of light (radiance) transmitted after traveling a distance *x* via Beer's law:
+In a homogenous medium, $\sigma_t$ is constant, and we can compute the fraction of light (radiance) transmitted after traveling a distance $x$ via Beer's law:
 
-T(*x*) = e<sup>-σ<sub>t</sub>*x*</sup>
+$$T(x) = e^{-\sigma_t x}$$
 
 where T is commonly referred to as *transmittance*.
 
-Substituting σ<sub>t</sub> in the previous equation by its definition via *attenuation color* and *attenuation distance*, as defined above, and setting *x* = *d* we get
+Substituting $\sigma_t$ in the previous equation by its definition via *attenuation color* and *attenuation distance*, as defined above, and setting $x = d$ we get
 
-T(d<sub>a</sub>) = e<sup>(log(*c*) / *d*) * *d*</sup> = *c*
+$$T(d_a) = e^{\frac{\log(c)}{d} d} = c$$
 
-So, after traveling distance *d* through the medium we get attenuation color *c*.
+So, after traveling distance $d$ through the medium we get attenuation color $c$.
 
 ## Base Color and Absorption
 
